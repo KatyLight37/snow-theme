@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="snow-theme.css" rel="stylesheet">
+  <script src="main.js"></script>
+  <script>
+    var authorDom, subjectDom, linkDom
+    window.onload = () => {
+      snowTheme()
+      authorDom = document.getElementById('authorDom')
+      subjectDom = document.getElementById('subjectDom')
+      linkDom = document.getElementById('linkDom')
+    }
+  </script>
+</head>
+<body>
+<canvas class="galaxy" id="galaxy"></canvas>
+<div class="frame">
+  <div class="post chief">
+    <div class="cTitle">my music</div>
+    <div class="author-box">
+      <span class="author" data-id="100001"
+            onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+    </div>
+    <div class="content">
+      <h2  >Rise</h2>
+      <span class="at" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+      <span class="at" data-id="100002" onmouseleave="queryAuthorEnd(event)"
+            onmouseenter="queryAuthor(event)">Lady Gaga</span>
+
+      <p>I won't just <span class="subject" onmouseleave="querySubjectEnd(event)" onmouseenter="querySubject(event)"
+                            onclick="jumpToSubject(event)">survive</span></p>
+      <p>Oh, you will see me thrive</p>
+      <p>Can't write my <a
+        href="http://localhost:8080?ab=123123333333331231233333333333333333333333333333333333333333333333333333331231233333333333333333333333333333333333333333333333333333331231233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333"
+        onmouseenter="queryLink(event)"
+        onmouseleave="queryLinkEnd(event)" class="link">story</a></p>
+      <p>I'm <span onclick="jumpToSubject(event)" onmouseleave="querySubjectEnd(event)"
+                   onmouseenter="querySubject(event)"
+                   class="subject">beyond</span> the archetype</p>
+      <p>I won't just conform</p>
+      <p>No matter how you shake my core</p>
+      <p>Cause my <span onclick="jumpToSubject(event)" onmouseleave="querySubjectEnd(event)"
+                        onmouseenter="querySubject(event)" class="subject">roots</span>, they run deep, oh</p>
+      <p>Oh ye of so little faith</p>
+      <p>Don't doubt it, don't doubt it</p>
+      <p>Victory is in my veins</p>
+      <p>I know it, I know it</p>
+      <p>And I will not negotiate</p>
+      <p>I'll fight it, I'll fight it</p>
+      <p>I will transform</p>
+      <p>When, when the fire's at my feet again</p>
+      <p>And the vultures all start circling</p>
+      <p>They're whispering, "you're out of time."</p>
+      <p>But still, I rise</p>
+      <p>This is no mistake, no accident</p>
+      <p>When you think the final end is in, think again</p>
+      <p>Don't be surprised, I will still rise</p>
+      <p>I must stay conscious</p>
+      <p>Through the menace and chaos</p>
+      <p>So I call on my angels</p>
+      <p>They say...</p>
+      <p>Oh ye of so little faith</p>
+      <p>Don't doubt it, don't doubt it</p>
+      <p>Victory is in your veins</p>
+      <p>You know it, you know it</p>
+      <p>And you will not negotiate</p>
+      <p>Just fight it, just fight it</p>
+      <p>And be transformed</p>
+      <p>Cause when, when the fire's at my feet again</p>
+      <p>And the vultures all start circling</p>
+      <p>They're whispering, "you're out of time."</p>
+      <p>But still, I rise</p>
+      <p>This is no mistake, no accident</p>
+      <p>When you think the final end is in, think again</p>
+      <p>Don't be surprised, I will still rise</p>
+      <p>Don't doubt it, don't doubt it</p>
+      <p>Oh oh, oh oh</p>
+      <p>You know it, you know it</p>
+      <p>Still rise</p>
+      <p>Just fight it, just fight it</p>
+      <p>Don't be surprised, I will still rise</p>
+
+    </div>
+
+
+  </div>
+  <div class="post">
+    <span class="author" data-id="100001" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Katy Perry</span>
+    <div class="content">i think so</div>
+  </div>
+  <div class="post">
+    <span class="author" data-id="100002" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Lady Gaga</span>
+    <div class="content">i think so</div>
+  </div>
+  <div class="post">
+    <span class="author" data-id="100003" onmouseenter="queryAuthor(event)"
+          onmouseleave="queryAuthorEnd(event)">Cascada</span>
+    <div class="content">Anything is view</div>
+    <div class="commit">
+      <div class="info">
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>commit</span>
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>:</span>
+      </div>
+      <div class="msg">
+        ok sea you~
+      </div>
+    </div>
+    <div class="commit">
+      <div class="info">
+        <span class="at" data-id="100001" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Katy Perry</span>
+        <span>commit</span>
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>:</span>
+      </div>
+      <div class="msg">
+        ok sea you~
+      </div>
+    </div>
+    <div class="commit">
+      <div class="info">
+        <span class="at" data-id="100001" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Katy Perry</span>
+        <span>commit</span>
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>:</span>
+      </div>
+      <div class="msg">
+        ok sea you~
+      </div>
+    </div>
+  </div>
+  <div class="post">
+    <span class="author" data-id="100004" onmouseenter="queryAuthor(event)"
+          onmouseleave="queryAuthorEnd(event)">Rihana</span>
+    <div class="content">Anything is view</div>
+  </div>
+  <div class="post">
+    <span class="author" data-id="100005" onmouseenter="queryAuthor(event)"
+          onmouseleave="queryAuthorEnd(event)">Taylor</span>
+    <div class="content">Anything is view</div>
+    <div class="commit">
+      <div class="info">
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>commit</span>
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>:</span>
+      </div>
+      <div class="msg">
+        ok sea you~
+      </div>
+    </div>
+    <div class="commit">
+      <div class="info">
+        <span class="at" data-id="100001" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Katy Perry</span>
+        <span>commit</span>
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>:</span>
+      </div>
+      <div class="msg">
+        ok sea you~
+      </div>
+    </div>
+    <div class="commit">
+      <div class="info">
+        <span class="at" data-id="100001" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Katy Perry</span>
+        <span>commit</span>
+        <span class="at" data-id="100003" onmouseenter="queryAuthor(event)" onmouseleave="queryAuthorEnd(event)">Cascada</span>
+        <span>:</span>
+      </div>
+      <div class="msg">
+        ok sea you~
+      </div>
+    </div>
+  </div>
+  <!--  <div class="edit-box"></div>-->
+</div>
+<div class="author-info" id="authorDom">
+  <div class="author-info-inner">
+    <div class="avatar"></div>
+    <div class="content">
+      <div class="userName">Katy Perry</div>
+      <div class="sentence  "></div>
+    </div>
+  </div>
+</div>
+<div class="subject-info" id="subjectDom">
+  <div class="subject-info-inner ">
+    <div class="content  "></div>
+  </div>
+</div>
+<div class="link-info" id="linkDom">
+  <div class="link-info-inner" data-name="link-info"></div>
+</div>
+</body>
+</html>

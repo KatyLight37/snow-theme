@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="snow-theme.css" rel="stylesheet">
+  <script src="main.js"></script>
+  <script>
+    var authorDom, subjectDom, linkDom
+    window.onload = () => {
+      snowTheme()
+      authorDom = document.getElementById('authorDom')
+      subjectDom = document.getElementById('subjectDom')
+      linkDom = document.getElementById('linkDom')
+    }
+  </script>
+</head>
+<body>
+<canvas class="galaxy" id="galaxy"></canvas>
+<div class="frame ">
+  <div class="cell post" onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+     <span class="author" data-right  onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+  <div class="cell post"  onclick="queryPost(event)" data-id="100001">
+    <div class="title">
+      Rise
+    </div>
+    <span class="author" data-right onclick="queryUserPage(event)" data-id="100001" onmouseleave="queryAuthorEnd(event)" onmouseenter="queryAuthor(event)">Katy Perry</span>
+  </div>
+</div>
+<div class="author-info" id="authorDom">
+  <div class="author-info-inner">
+    <div class="avatar"></div>
+    <div class="content">
+      <div class="userName">Katy Perry</div>
+      <div class="sentence  "></div>
+    </div>
+  </div>
+</div>
+<div class="subject-info" id="subjectDom">
+  <div class="subject-info-inner ">
+    <div class="content  "></div>
+  </div>
+</div>
+<div class="link-info" id="linkDom">
+  <div class="link-info-inner" data-name="link-info"></div>
+</div>
+</body>
+</html>

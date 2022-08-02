@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="snow-theme.css" rel="stylesheet">
+  <script src="main.js"></script>
+  <script>
+    class KatyLightNavbar {
+      constructor(params) {
+        this.target = params.target
+        this.target.classList.add('KatyLight-navbar')
+        this.index = 0
+        this.nodeList = []
+        this.dataList = params.dataList
+        this.chooseActive = params.choose
+        this.target.addEventListener('choose', (event) => {
+          this.index = event.detail.index
+          this.chooseActive(event.detail)
+        })
+        this.line = document.createElement('div')
+        this.line.style.width = '0'
+        this.target.append(this.line)
+        this.line.classList.add('line')
+        for (let i = 0; i < this.dataList.length; i++) {
+          let obj = document.createElement('div')
+          obj.dataset.key = this.dataList[i].key
+          obj.dataset.index = i
+          obj.innerText = this.dataList[i].label
+          obj.classList.add('item')
+          obj.onclick = (ev) => {
+            this.go(ev)
+          }
+          // obj.setAttribute('onclick','go(event)')
+          this.target.append(obj)
+          this.nodeList.push(obj)
+        }
+        this.line.style.width = this.nodeList[0].clientWidth + 'px'
+        // this.line.style.top = ( this.nodeList[0].offsetTop +  this.nodeList[0].clientHeight) + 'px';
+      }
+
+      go(e) {
+        this.line.style.left = e.target.offsetLeft + 'px'
+        // this.line.style.top = (e.target.offsetTop + e.target.clientHeight) + 'px';
+        this.line.style.width = e.target.clientWidth + 'px'
+        this.doEvent({
+          value: e.target.dataset.key,
+          index: parseInt(e.target.dataset.index),
+          label: e.target.innerText
+        })
+      }
+
+      doEvent(data) {
+        if (this.target.dispatchEvent) {
+          this.target.dispatchEvent(new CustomEvent('choose', {
+            detail: {
+              value: data.value,
+              index: data.index,
+              label: data.label
+            }
+          }))
+        } else {
+          this.target.fireEvent(new CustomEvent('choose', {
+            detail: {
+              value: data.value,
+              index: data.index,
+              label: data.label
+            }
+          }))
+        }
+      }
+
+      choose(index) {
+        this.line.style.left = this.nodeList[index].offsetLeft + 'px'
+        // this.line.style.top = (this.nodeList[index].offsetTop + this.nodeList[index].clientHeight) + 'px';
+        this.line.style.width = this.nodeList[index].clientWidth + 'px'
+        this.doEvent({
+          value: this.nodeList[index].dataset.key,
+          index: parseInt(this.nodeList[index].dataset.index),
+          label: this.nodeList[index].innerText
+        })
+      }
+
+    }
+
+    let navBarList = [
+      {
+        label: 'roles',
+        key: 'roles'
+      },
+      {
+        label: 'portfolio',
+        key: 'portfolio'
+      },
+      {
+        label: 'gallery',
+        key: 'gallery'
+      },
+      {
+        label: 'settings',
+        key: 'settings'
+      },
+      {
+        label: 'items',
+        key: 'items'
+
+      },
+      {
+        label: 'introduce',
+        key: 'introduce'
+
+      }
+
+    ]
+
+    window.onload = () => {
+
+    }
+
+    var authorDom, subjectDom, linkDom
+    window.onload = () => {
+      snowTheme()
+      authorDom = document.getElementById('authorDom')
+      subjectDom = document.getElementById('subjectDom')
+      linkDom = document.getElementById('linkDom')
+      let pageIndex = 0
+      let pageList = document.querySelectorAll('.page')
+      pageList[pageIndex].style.display = 'block'
+      let Nav = new KatyLightNavbar({
+        target: document.querySelector('nav'),
+        dataList: navBarList,
+        choose: (data) => {
+          pageList[pageIndex].style.display = ''
+          pageIndex = data.index
+          pageList[pageIndex].style.display = 'block'
+        }
+      })
+      setTimeout(() => {
+        Nav.choose(0)
+      }, 10)
+    }
+  </script>
+</head>
+<body>
+<canvas class="galaxy" id="galaxy"></canvas>
+<div class="frame user-land">
+  <div class="header">
+    <div class="userName">Katy Perry</div>
+    <div class="avatar-box">
+      <img class="avatar" alt=""
+           src="https://img2.baidu.com/it/u=464736753,4100005328&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=519">
+    </div>
+    <div class="info">
+      <div class="sentence empty"></div>
+    </div>
+  </div>
+  <nav class="kl-navbar"></nav>
+  <div class="body">
+    <div class="gallery page" data-menu="roles">
+      <div class="item">
+        <div class="title">Cascada</div>
+        <img alt="" src="https://img2.baidu.com/it/u=2059818102,415238288&fm=253&fmt=auto&app=138&f=JPEG?w=220&h=205"
+             class="img"/>
+      </div>
+      <div class="item">
+        <div class="title">Katy Perry</div>
+        <img alt="" src="https://img2.baidu.com/it/u=464736753,4100005328&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=519"
+             class="img"/>
+      </div>
+      <div class="item">
+        <div class="title">Natalia kills</div>
+        <img alt="" src="https://img0.baidu.com/it/u=641260638,1206563123&fm=253&fmt=auto?w=170&h=170"
+             class="img"/>
+      </div>
+      <div class="item">
+        <div class="title">Taylor Swift</div>
+        <img alt="" src="https://img0.baidu.com/it/u=1077150220,2232131707&fm=253&fmt=auto&app=138&f=JPEG?w=496&h=1048"
+             class="img"/>
+      </div>
+      <div class="item">
+        <div class="title">Madonna</div>
+        <img alt="" src="https://img1.baidu.com/it/u=4071767426,1426258310&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=666"
+             class="img"/>
+      </div>
+      <div class="item">
+        <div class="title">Lady Gaga</div>
+        <img alt="" src="https://img2.baidu.com/it/u=2519864798,466232981&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=431"
+             class="img"/>
+      </div>
+      <div class="item">
+        <div class="title">M.I.A.</div>
+        <img alt="" src="https://img0.baidu.com/it/u=3057215832,151733688&fm=253&fmt=auto&app=138&f=JPEG?w=957&h=500"
+             class="img"/>
+      </div>
+      <div class="item">
+        <div class="title">Rihanna</div>
+        <img alt="" src="https://img1.baidu.com/it/u=3804587268,2153838202&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=625"
+             class="img"/>
+      </div>
+    </div>
+    <div class="gallery page" data-menu="portfolio">
+      <div class="item">
+        <img alt="" src="https://img1.baidu.com/it/u=984157448,3448743667&fm=253&fmt=auto&app=138&f=JPG?w=889&h=500"
+             class="img"/>
+        <div class="title">demo fly</div>
+      </div>
+    </div>
+    <div class="gallery page" data-menu="gallery">
+      <div class="item">
+        <img alt="" src="https://img1.baidu.com/it/u=984157448,3448743667&fm=253&fmt=auto&app=138&f=JPG?w=889&h=500"
+             class="img"/>
+      </div>
+    </div>
+    <div class="gallery page" data-menu="settings">
+      <div class="item">
+        <div class="subtitle">Astrology</div>
+        <div class="content">describe this;describe this;describe this;describe this;describe this;describe
+          this;describe this;describe this;describe this;describe this;describe this;describe this;describe
+          this;describe this;
+        </div>
+      </div>
+      <div class="item">
+        <div class="subtitle">Super Power</div>
+        <div class="content">describe this</div>
+      </div>
+      <div class="item">
+        <div class="subtitle">Human</div>
+        <div class="content">describe this</div>
+      </div>
+      <div class="item">
+        <div class="subtitle"></div>
+        <div class="content">describe this</div>
+      </div>
+    </div>
+    <div class="gallery page" data-menu="items">
+      <div class="item">
+        <img alt="" src="https://img1.baidu.com/it/u=984157448,3448743667&fm=253&fmt=auto&app=138&f=JPG?w=889&h=500"
+             class="img"/>
+        <div class="title">heal position</div>
+      </div>
+    </div>
+    <div class="introduce page" data-menu="introduce">
+      <div class="line-title">basic info</div>
+      <div class="row">
+        <div class="key">username</div>
+        <div class="value">katy perry</div>
+      </div>
+      <div class="zow">
+        <div class="key">sentence</div>
+        <div class="value"></div>
+      </div>
+      <div class="line-title">favorite things</div>
+      <div class="row">
+        <div class="key">favorite role</div>
+        <div class="value"></div>
+      </div>
+      <div class="row">
+        <div class="key">favorite items</div>
+        <div class="value"></div>
+      </div>
+      <div class="row">
+        <div class="key">favorite portfolio</div>
+        <div class="value"></div>
+      </div>
+    </div>
+  </div>
+  <div class="author-info" id="authorDom">
+    <div class="author-info-inner">
+      <div class="avatar"></div>
+      <div class="content">
+        <div class="userName">Katy Perry</div>
+        <div class="sentence empty">there is empty</div>
+      </div>
+    </div>
+  </div>
+  <div class="subject-info" id="subjectDom">
+    <div class="subject-info-inner ">
+      <div class="content empty"></div>
+    </div>
+  </div>
+  <div class="link-info" id="linkDom">
+    <div class="link-info-inner" data-name="link-info"></div>
+  </div>
+</body>
+</html>

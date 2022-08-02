@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="snow-theme.css" rel="stylesheet">
+  <script src="main.js"></script>
+
+  <script>
+    var defaultResources = {
+      avatar: 'https://img1.baidu.com/it/u=1899294918,3468224768&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313'
+    }
+    var templateCreate = {
+      accountListItem(
+        item
+      ) {
+        let dom = document.createElement('div')
+        dom.classList.add('item')
+        dom.setAttribute('onclick', 'eisTrigger(event,"click")')
+        dom.dataset.id = item.id
+        dom.dataset.eis = 'accountListItem'
+        //data-eis="accountList"
+        dom.innerHTML = `<img class="avatar"
+               src="${item.avatar}"
+               alt=""/>
+          <div class="username">
+            ${item.username}
+          </div>`
+        return dom
+      }
+    }
+    var database = {
+      account: [
+        {
+          id: '100001',
+          avatar: 'https://img2.baidu.com/it/u=464736753,4100005328&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=519',
+          username: 'Katy Perry',
+          sentence: '',
+          email: '164@qq.com',
+          password: '123'
+        },
+        {
+          id: '100002',
+          avatar: 'https://img0.baidu.com/it/u=2664693041,1184290998&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
+          username: 'Lady Gaga',
+          sentence: 'i\'m Lady Gaga',
+          email: '165@qq.com',
+          password: '123'
+        },
+        {
+          id: '100003',
+          avatar: 'https://img0.baidu.com/it/u=3054808094,4164279218&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500',
+          username: 'Cascada',
+          sentence: 'i\'m Cascada',
+          email: '23@qq.com',
+          password: '123'
+        },
+        {
+          id: '100004',
+          avatar: 'https://img2.baidu.com/it/u=1090851470,2854588604&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=500',
+          username: 'Rihana',
+          sentence: 'i\'m Rihana',
+          email: '95@qq.com',
+          password: '123'
+        },
+        {
+          id: '100005',
+          avatar: 'https://img0.baidu.com/it/u=508817106,3971212385&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=281',
+          username: 'Taylor',
+          sentence: 'i\'m Taylor',
+          email: '1@qq.com',
+          password: '123'
+        },
+        {
+          id: '100006',
+          avatar: 'https://img0.baidu.com/it/u=641260638,1206563123&fm=253&fmt=auto?w=170&h=170',
+          username: 'Natalia Kills',
+          sentence: 'Natalia Kills',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100007',
+          avatar: 'https://img2.baidu.com/it/u=2935838388,1218798213&fm=253&fmt=auto&app=138&f=JPG?w=241&h=351',
+          username: 'Kesha',
+          sentence: 'Kesha',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100008',
+          avatar: 'https://img1.baidu.com/it/u=161822403,3485140900&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=672',
+          username: 'Avril',
+          sentence: 'Avril',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100009',
+          avatar: 'https://img1.baidu.com/it/u=2363973226,1838717727&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=669',
+          username: 'Britney Spears',
+          sentence:  'Britney Spears',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100010',
+          avatar: 'https://img0.baidu.com/it/u=1776113853,1029031370&fm=253&fmt=auto&app=138&f=JPEG?w=496&h=500',
+          username: 'Madonna',
+          sentence:  'Madonna',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100011',
+          avatar: 'https://img1.baidu.com/it/u=1708146942,2856798513&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
+          username: 'Iggy Azelea',
+          sentence:  'Iggy Azelea',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100012',
+          avatar: 'https://img1.baidu.com/it/u=3759790257,853989830&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=426',
+          username: 'lana del rey',
+          sentence:  'lana del rey',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100013',
+          avatar: 'https://img1.baidu.com/it/u=1910555668,2543530948&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300',
+          username: 'Tove lo',
+          sentence:  'Tove lo',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100014',
+          avatar: 'https://img2.baidu.com/it/u=1495824209,2174166028&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=496',
+          username: 'jennifer Lopez',
+          sentence:  'jennifer Lopez',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100015',
+          avatar: 'https://img1.baidu.com/it/u=1442793712,1250020242&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
+          username: 'Celine Dion',
+          sentence:  'Celine Dion',
+          email: '12@qq.com',
+          password: '123'
+        },
+        {
+          id: '100016',
+          avatar: 'https://img1.baidu.com/it/u=1442793712,1250020242&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
+          username: 'Celine Dion',
+          sentence:  'Celine Dion',
+          email: '12@qq.com',
+          password: '123'
+        },
+
+      ]
+    }
+    var server = {
+      login(
+        email,
+        password
+      ) {
+        return new Promise((resolve, reject) => {
+          let req = {
+            code: 300,
+            msg: 'has no account'
+          }
+          for (let i = 0; i < database.account.length; i++) {
+            let item = database.account[i]
+            if (item.email === email) {
+              if (item.password !== password) {
+                req.msg = 'error password'
+                req.code = 300
+                break
+              } else {
+                req.msg = 'login success'
+                req.code = 200
+                break
+              }
+            }
+          }
+          resolve(req)
+        })
+
+      },
+      giveYourAccountInfo(id) {
+        for (let i = 0; i < database.account.length; i++) {
+          let item = database.account[i]
+          if (item.id === id) {
+            return item
+          }
+        }
+      },
+      getAccountList() {
+        return database.account
+      }
+    }
+    var domMaster = {
+      dom:{
+        authorDom:null,
+        subjectDom:null,
+        linkDom:null,
+        avatarDom:null,
+      },
+      setAvatarDom(href) {
+        if(!(this.dom.avatarDom.src===href))
+        this.dom.avatarDom.src = href
+      },
+      accountListInit(target) {
+        let z = server.getAccountList()
+        z.forEach(item => {
+          target.append(templateCreate.accountListItem(item))
+        })
+      }
+    }
+
+    var formRules = {
+      'email': [
+        {
+          role: 'command',
+          command: 'empty',
+          info: 'the email can\'t empty!'
+        },
+        {
+          role: 'command',
+          command: 'empty',
+          info: 'the email can\'t empty!2222'
+        }
+      ],
+      'password': [
+        {
+          role: 'command',
+          command: 'empty',
+          info: 'the password can\'t empty!'
+        }
+      ]
+    }
+    function formPresetCommand(command, val) {
+      switch (command) {
+        case 'empty':
+          return val !== ''
+          break
+      }
+    }
+    function checkForm() {
+      validate().then(res => {
+        form.password = domForm['password'].input.value
+        form.email = domForm['email'].input.value
+        login()
+      }).catch(err => {
+      })
+    }
+    function validate() {
+      return new Promise((resolve, reject) => {
+        let can = true
+        Object.keys(domForm).forEach(kk => {
+          let rr = formRules[kk]
+          let ok = true
+          for (let i = 0; i < rr.length; i++) {
+            let zit = rr[i]
+            switch (zit.role) {
+              case 'command':
+                let kf = formPresetCommand(zit.command, domForm[kk].input.value)
+                if (!kf) {
+                  domForm[kk].info.classList.add('show')
+                  domForm[kk].info.innerText = zit.info
+                  if (utils.hasClass(domForm[kk].view, 'error')) {
+                    domForm[kk].view.classList.remove('error')
+                    setTimeout(() => {
+                      domForm[kk].view.classList.add('error')
+                    }, 10)
+                  } else {
+                    domForm[kk].view.classList.add('error')
+                  }
+                  domForm[kk].warn = true
+                  can = false
+                  ok = false
+                }
+                break
+            }
+            if (!ok) {
+              return
+            }
+          }
+          if (ok) {
+            domForm[kk].warn = false
+            domForm[kk].view.classList.remove('error')
+            domForm[kk].info.classList.remove('show')
+          }
+        })
+        if (can) {
+          resolve()
+        } else {
+          reject()
+        }
+      })
+
+    }
+    function checkVal(kk) {
+      if (domForm[kk].input.value !== '') {
+        domForm[kk].del.classList.add('show')
+        if (domForm[kk].warn) {
+          domForm[kk].warn = false
+          domForm[kk].view.classList.remove('error')
+          domForm[kk].info.classList.remove('show')
+        }
+      } else {
+        domForm[kk].del.classList.remove('show')
+      }
+    }
+    var form = {
+      email: '',
+      password: ''
+    }
+    var domForm = {
+      email: {},
+      password: {}
+    }
+    var utils = {
+      hasClass(elem, cls) {
+        cls = cls || ''
+        if (cls.replace(/\s/g, '').length === 0) return false
+        return new RegExp(' ' + cls + ' ').test(' ' + elem.className + ' ')
+      }
+    }
+    function eisTrigger(e, role) {
+      switch (role) {
+        case 'click':
+          let kk = e.target.dataset.eis
+          eis[kk].clickTrigger(e)
+          break
+      }
+
+    }
+    function activeEisMethod(kk, e, name) {
+      let acc = domForm[kk].input.dataset.eis
+      if (acc) {
+        let active = domForm[kk].input.dataset[name]
+        eis[acc][active](e)
+      }
+    }
+    var eis = {
+      accountListItem: {
+        clickTrigger(e) {
+          let str = e.target.dataset.id
+          let item = server.giveYourAccountInfo(str)
+          domMaster.setAvatarDom(item.avatar)
+          domForm['email'].input.value = item.email
+          checkVal('email')
+          eis.accountList.close()
+        },
+
+      },
+      accountList: {
+        target: null,
+        parent: null,
+        reset() {
+          //理论上来讲，重置头像要重弄
+          domMaster.setAvatarDom(defaultResources.avatar)
+        },
+        outClick(e) {
+          if (!this.parent.contains(e.target)) {
+            this.target.classList.remove('show')
+          }
+        },
+        destroy() {
+          document.body.removeEventListener('click', this.outClickZ)
+        },
+        init() {
+          this.outClickZ = this.outClick.bind(this)
+          this.parent = this.target.parentElement
+          domMaster.accountListInit(this.target)
+        },
+        close() {
+          this.target.classList.remove('show')
+        },
+        outClickZ: null,
+        focusTrigger(e) {
+          let value = e.target.value
+          if (value === '') {
+            this.target.classList.add('show')
+            document.body.addEventListener('click', this.outClickZ)
+          } else {
+            this.target.classList.remove('show')
+          }
+        },
+        focusTrigger2(e){
+          this.focusTrigger(e)
+          domMaster.setAvatarDom(defaultResources.avatar)
+        },
+        leaveTrigger(e) {
+          this.target.classList.remove('show')
+        }
+
+      }
+    }
+    window.onload = () => {
+      snowTheme()
+      domMaster.dom.authorDom = document.getElementById('authorDom')
+      domMaster.dom.subjectDom = document.getElementById('subjectDom')
+      domMaster.dom.linkDom = document.getElementById('linkDom')
+      domMaster.dom.avatarDom = document.getElementById('avatar')
+      eis.accountList.target = document.getElementById('accountList')
+      eis.accountList.init()
+      let dom = document.querySelectorAll('.input-input')
+      dom.forEach(item => {
+        let k = item.dataset.name
+        domForm[k] = {
+          view: item.parentElement,
+          input: item,
+          info: item.parentElement.parentElement.querySelector('.info'),
+          warn: false,
+          del: item.parentElement.querySelector('.del')
+        }
+      })
+    }
+    function login() {
+      server.login(form.email, form.password).then(res => {
+        if (res.code !== 200) {
+          if (utils.hasClass( domMaster.dom.avatarDom, 'error')) {
+            domMaster.dom.avatarDom.classList.remove('error')
+            setTimeout(() => {
+              domMaster.dom.avatarDom.classList.add('error')
+            }, 10)
+          } else {
+            domMaster.dom.avatarDom.classList.add('error')
+          }
+        } else {
+
+        }
+      })
+
+    }
+    function focusInput(e) {
+      let kk = e.target.dataset.name
+      domForm[kk].view.classList.remove('error')
+      checkVal(kk)
+      activeEisMethod(kk, e, 'focus')
+    }
+    function insertInput(e) {
+      let kk = e.target.dataset.name
+      checkVal(kk)
+      activeEisMethod(kk, e, 'input')
+    }
+    function clearInput(e) {
+      let kk = e.target.dataset.name
+      domForm[kk].input.value = ''
+      domForm[kk].del.classList.remove('show')
+      activeEisMethod(kk, e, 'clear')
+    }
+  </script>
+</head>
+<body>
+<canvas class="galaxy" id="galaxy"></canvas>
+<div class="frame full">
+  <div class="login-box">
+    <div class="row">
+      <img class="avatar" id="avatar"
+           src="https://img1.baidu.com/it/u=1899294918,3468224768&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313" alt="">
+    </div>
+    <div class="row">
+      <div class="input-box">
+        <input placeholder="email" class="input-input"
+               data-eis="accountList" data-focus="focusTrigger"
+               data-input="focusTrigger2" data-name="email"
+               data-clear="reset"
+               onfocus="focusInput(event)" oninput="insertInput(event)"></input>
+        <div class="input-view"></div>
+        <div class="del" onclick="clearInput(event)" data-name="email"></div>
+      </div>
+      <div class="accountList" id="accountList"></div>
+      <div class="info">warn you need insert email</div>
+    </div>
+    <div class="row">
+      <div class="input-box">
+        <input placeholder="password" class="input-input" data-name="password" onfocus="focusInput(event)"
+               oninput="insertInput(event)"></input>
+        <div class="input-view"></div>
+        <div class="del" onclick="clearInput(event)" data-name="password"></div>
+      </div>
+      <div class="info">warn you need insert password</div>
+      <div class="cirBtn" onclick="checkForm()"></div>
+    </div>
+    <!--    <div class="row">-->
+    <!--      <div>remember me</div>-->
+    <!--    </div>-->
+  </div>
+  <div class="login-footer">
+    <span class="item">forgot password</span>
+    <span class="item">login</span>
+    <span class="item">create a account</span>
+  </div>
+</div>
+<div class="author-info" id="authorDom">
+  <div class="author-info-inner">
+    <div class="avatar"></div>
+    <div class="content">
+      <div class="userName">Katy Perry</div>
+      <div class="sentence  "></div>
+    </div>
+  </div>
+</div>
+<div class="subject-info" id="subjectDom">
+  <div class="subject-info-inner ">
+    <div class="content  "></div>
+  </div>
+</div>
+<div class="link-info" id="linkDom">
+  <div class="link-info-inner" data-name="link-info"></div>
+</div>
+</body>
+</html>
